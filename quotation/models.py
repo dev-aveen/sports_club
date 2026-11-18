@@ -8,3 +8,4 @@ class Quote(models.Model):
     class Meta:
       def __str__(self):
         return self.author
+      

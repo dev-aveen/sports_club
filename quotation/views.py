@@ -7,19 +7,19 @@ from django.shortcuts import get_object_or_404
 from .models import Quote
 from .serializers import QuoteSerializer
 
-# 1. للمدير: عرض جميع الاقتباسات + إضافة اقتباس جديد
+
 class AdminQuoteListCreateAPIView(ListCreateAPIView):
     queryset = Quote.objects.all()
     serializer_class = QuoteSerializer
     permission_classes = [IsAdminUser]
 
-# 2. للمدير: تعديل، حذف، أو تفعيل اقتباس معين كمميز
+
 class AdminQuoteDetailAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Quote.objects.all()
     serializer_class = QuoteSerializer
     permission_classes = [IsAdminUser]
 
-    # دالة PATCH مخصصة ليتكمن المدير من تفعيل الاقتباس وجعله المفعل الوحيد
+ 
     def patch(self, request, *args, **kwargs):
         Quote.objects.update(is_featured=False)
         quote = self.get_object()
@@ -29,7 +29,6 @@ class AdminQuoteDetailAPIView(RetrieveUpdateDestroyAPIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-# 3. للمستخدم العادي: رؤية الاقتباس المفعل الحالي فقط
 class FeaturedQuoteAPIView(APIView):
     permission_classes = [AllowAny]
 

@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['aveendev.pythonanywhere.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Application definition
 
@@ -150,8 +150,8 @@ AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']
 
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME':timedelta(days=365),
-    'REFRESH_TOKEN_LIFETIME':timedelta(days=365),
+    'ACCESS_TOKEN_LIFETIME':timedelta(days=3),
+    'REFRESH_TOKEN_LIFETIME':timedelta(days=3),
     'ROTATE_REFRESH_TOKENS':False,
     'BLACKLIST_AFTER_ROTATION':False,
     'ALGORITHM':'HS256',

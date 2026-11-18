@@ -7,10 +7,6 @@ urlpatterns = [
     path('login/',LoginView.as_view(),name='login'),
     path('token/refresh/',TokenRefreshView.as_view(),name='token_refresh'),
     path('profile/',UserProfileView.as_view(),name='user_profile'),
-    #path('change_password/',ChangePassword.as_view(),name='change_password'),
-    path('logout/',TokenBlacklistView.as_view(),name='logout'),
-    #path('add-manager/',AddSubManagerView.as_view(),name='add_sub_manager'),
-
-   
+    path('logout/',TokenBlacklistView.as_view(),name='logout')
 ]
 
